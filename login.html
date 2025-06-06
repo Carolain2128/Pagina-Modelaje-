@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Login page for EclipseModel">
+    <meta name="author" content="Devcrud">
+    <title>EclipseModel | Login</title>
+   
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/vendors/animate/animate.css">
+
+    <!-- Bootstrap + FoodHut main styles -->
+    <link rel="stylesheet" href="assets/css/foodhut.css">
+    
+    <style>
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.932);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 100px auto;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .alert {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    
+    <!-- Navbar -->
+    <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#home">Principal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#about">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#gallary">Modelos</a>
+                </li>
+            </ul>
+            <a class="navbar-brand m-auto" href="index.html">
+                <span class="brand-txt">EclipseModel</span>
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#blog">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#contact">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="btn btn-primary ml-xl-4">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="container">
+        <div class="login-container wow fadeIn">
+            <div class="login-header">
+                <h2 class="text-white">Iniciar Sesión</h2>
+                <p class="text-muted">Ingresa tus credenciales para acceder</p>
+            </div>
+            
+            <!-- Alert Messages -->
+            <div id="errorAlert" class="alert alert-danger"></div>
+            <div id="successAlert" class="alert alert-success"></div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="remember">
+                    <label class="form-check-label text-muted" for="remember">Recordarme</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            </form>
+            
+            <div class="login-footer">
+                <a href="#forgot-password" class="text-muted">¿Olvidaste tu contraseña?</a>
+                <p class="text-muted mt-2">¿No tienes cuenta? <a href="#register">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Forgot Password -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="forgotPasswordModalLabel">Recuperar Contraseña</h5>
+                    <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm">
+                        <div class="form-group">
+                            <label for="recoveryEmail">Correo electrónico</label>
+                            <input type="email" class="form-control" id="recoveryEmail" required>
+                            <small class="form-text text-muted">Te enviaremos un enlace para restablecer tu contraseña.</small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="sendRecovery">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    
+    <!-- Custom login script -->
+    <script>
+        $(document).ready(function() {
+            // Crear usuario de prueba si no existe
+            if (!localStorage.getItem('testUser')) {
+                const testUser = {
+                    email: "modelo@eclipse.com",
+                    password: "Eclipse123",
+                    name: "Modelo Ejemplo",
+                    role: "model"
+                };
+                localStorage.setItem('testUser', JSON.stringify(testUser));
+            }
+            
+            // Mostrar mensaje de usuario de prueba
+            $('#successAlert').text('Usuario de prueba: modelo@eclipse.com / Eclipse123').fadeIn();
+            setTimeout(() => $('#successAlert').fadeOut(), 5000);
+            
+            // Forgot password modal
+            $('a[href="#forgot-password"]').click(function(e) {
+                e.preventDefault();
+                $('#forgotPasswordModal').modal('show');
+            });
+            
+            // Login form submission
+            $('#loginForm').submit(function(e) {
+                e.preventDefault();
+                const email = $('#email').val().trim();
+                const password = $('#password').val();
+                const remember = $('#remember').is(':checked');
+                
+                // Ocultar mensajes anteriores
+                $('#errorAlert').hide();
+                $('#successAlert').hide();
+                
+                // Validación básica
+                if (!email || !password) {
+                    showError('Por favor completa todos los campos');
+                    return;
+                }
+                
+                // Obtener usuario de prueba
+                const testUser = JSON.parse(localStorage.getItem('testUser'));
+                
+                // Verificar credenciales
+                if (email === testUser.email && password === testUser.password) {
+                    // Guardar sesión si seleccionó "Recordarme"
+                    if (remember) {
+                        localStorage.setItem('loggedInUser', JSON.stringify({
+                            email: testUser.email,
+                            name: testUser.name,
+                            role: testUser.role
+                        }));
+                    } else {
+                        sessionStorage.setItem('loggedInUser', JSON.stringify({
+                            email: testUser.email,
+                            name: testUser.name,
+                            role: testUser.role
+                        }));
+                    }
+                    
+                    // Redirigir al dashboard
+                    window.location.href = 'dashboard.html';
+                } else {
+                    showError('Credenciales incorrectas. Usa modelo@eclipse.com / Eclipse123');
+                }
+            });
+            
+            // Send recovery email
+            $('#sendRecovery').click(function() {
+                const email = $('#recoveryEmail').val().trim();
+                if (!email) {
+                    showError('Por favor ingresa tu correo electrónico');
+                    return;
+                }
+                
+                // Verificar si es el correo de prueba
+                if (email === "modelo@eclipse.com") {
+                    $('#forgotPasswordModal').modal('hide');
+                    $('#successAlert').text(`Se ha enviado un enlace de recuperación a ${email} (simulado)`).fadeIn();
+                    setTimeout(() => $('#successAlert').fadeOut(), 5000);
+                } else {
+                    showError('Este correo no está registrado en nuestro sistema');
+                }
+            });
+            
+            // Función para mostrar errores
+            function showError(message) {
+                $('#errorAlert').text(message).fadeIn();
+            }
+        });
+    </script>
+</body>
+</html>
