@@ -1,0 +1,8 @@
+CREATE TABLE agendamientos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL,
+    documento VARCHAR(20) NOT NULL,
+    hora TIME NOT NULL,
+    fecha DATE NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
